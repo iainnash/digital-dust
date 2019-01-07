@@ -1,10 +1,12 @@
 <!DOCTYPE HTML>
 <html>
+
 <head>
-<title>digital dust analytics</title>
+	<title>digital dust analytics</title>
 	<link href='https://fonts.googleapis.com/css?family=VT323' rel='stylesheet' type='text/css' />
 	<link href='style.css' rel='stylesheet' type='text/css' />
 </head>
+
 <body>
 
 	<div id="newsfeed">
@@ -23,17 +25,18 @@
 			}
 			msg.appendTo($('#newsfeed'));
 			msg.delay(3000).slideUp(800);
-			setTimeout(function() {
+			setTimeout(function () {
 				msg.remove();
 			}, 4000);
 		}
 		var start = (new Date()).getTime();
+
 		function timePassed() {
 			return (new Date()).getTime() - start;
 		}
 		addMessage('loading...');
 		var stats = new Stats('http://digitaldust.firebaseio.com/');
-		stats.addDustListener(function(stats) {
+		stats.addDustListener(function (stats) {
 			if (timePassed() < 2000) return;
 			console.log(stats);
 			var url;
@@ -43,12 +46,13 @@
 			if (stats.type === 'flickr') {
 				url = stats.data.url_m;
 			}
-			addMessage('got dust: ', stats.type, '<img src="'+url+'" />');
+			addMessage('got dust: ', stats.type, '<img src="' + url + '" />');
 		})
-		stats.addLocationListener(function(loc) {
+		stats.addLocationListener(function (loc) {
 			if (timePassed() < 2000) return;
-			addMessage('navigated to:', ' lat: ' + loc.lat +', lng: ' + loc.lng + ', desc: ' + loc.desc);
+			addMessage('navigated to:', ' lat: ' + loc.lat + ', lng: ' + loc.lng + ', desc: ' + loc.desc);
 		})
 	</script>
 </body>
+
 </html>
