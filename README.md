@@ -12,7 +12,9 @@ This is the code for a senior year USC interactive project.
 
 The project was submitted to the second annual [Undergraduate Symposium for Scholarly and Creative Work](https://undergrad.usc.edu/experience/research/symposium/previous/spring2016/) winning 2<sup>nd</sup> prize in the Arts category.
 
-My faculty sponsor was Shannon Ebner.
+My faculty sponsor was [Shannon Ebner](https://www.guggenheim.org/artwork/artist/shannon-ebner).
+
+[Here is](http://dust.iain.in/) a live preview of the current application (not working due to API changes).
 
 ### Today
 
