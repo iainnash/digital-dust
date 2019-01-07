@@ -521,7 +521,7 @@ var StreetViewAppFactory = function (container) {
 			sv.scene.add(sv.torus);
 		},
 		setupBackground: function () {
-			var tex = THREE.ImageUtils.loadTexture('gridpat.png');
+			var tex = THREE.ImageUtils.loadTexture('img/gridpat.png');
 			tex.wrapT = THREE.RepeatWrapping;
 			tex.wrapS = THREE.RepeatWrapping;
 			tex.repeat.set(80, 80);
@@ -597,7 +597,7 @@ var StreetViewAppFactory = function (container) {
 
 			// make geometry mesh
 			sv.mesh = new THREE.Mesh(new THREE.SphereGeometry(500, 60, 40), new THREE.MeshBasicMaterial({
-				map: THREE.ImageUtils.loadTexture('placeholder.jpg'),
+				map: THREE.ImageUtils.loadTexture('img/placeholder.jpg'),
 				transparent: true
 			}));
 
