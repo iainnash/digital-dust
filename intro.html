@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>digital d u s t introduction</title>
+  <link href='https://fonts.googleapis.com/css?family=VT323' rel='stylesheet' type='text/css'>
+  <style>
+    body {
+      font-family: 'VT323';
+      font-size: 2.3em;
+    }
+    h1, h2, h3, h4, h5 {
+      margin: 0;
+      font-weight: normal;
+    }
+    .stage {
+      width: 60%;
+      min-width: 400px;
+      margin: 10% auto 0 auto;
+      padding: 20px;
+    }
+    .invert {
+      color: #fff;
+      background:#000;
+    }
+    .invert a {
+      color:inherit;
+    }
+    .sm {
+      font-size: 0.7em;
+      color:#222;
+    }
+    .go {
+      padding: 20px;
+      border: black 10px solid;
+      text-decoration: none;
+    }
+    .go:hover {
+      background:#000;
+      color:#fff;
+      border-color:#fff;
+    }
+    a {
+      color:#fff;
+    }
+    .md {
+      font-size:0.8em;
+    }
+  </style>
+</head>
+<body>
+  <div class="stage">
+    <h2>digital d u s t</h2>
+    <h4 class="md"><a href="http://iain.in/" target="_blank">by iain nash</a> </h4>
+    <p>Google Street View shows you streets and places, but it fails to show any memories.</p><p>Sees the streets' stories:<br />Collect and view some digital crumbs hidden in plain sight.</p>
+    <p>Want to avoid those foursquare checkins sitting in the sky to cubes of shared photos on instagram and flickr photos?</p><p> Find out how much hides in plain sight. </p><p> Can you find a place clean from digital dust?</p>
+    <br />
+    <a class="go" id="go" href="/go">jump in</a>
+    <div class="space"></div>
+    <br />
+    <br />
+    <p class="sm">ps. give it a try on your [i]phone :D</p>
+  </div>
+<script>
+	var go = document.getElementById('go');
+	/*
+	Removed because visual effect was too jarring.
+	go.addEventListener('mouseover', function(evt) {
+		document.body.className = 'invert';
+	})
+	go.addEventListener('mouseout', function(evt) {
+		document.body.className = '';
+	})
+	*/
+	document.addEventListener('mousemove', function(evt) {
+		var rect = go.getBoundingClientRect();
+
+		var colorScale = Math.sqrt(
+			Math.pow(evt.clientX - rect.left, 2) +
+			Math.pow(evt.clientY - rect.top, 2)
+		) / (rect.top-300);
+
+		var grey = Math.max(180,Math.floor(colorScale*255));
+		var greyi = 255 - grey;
+		var colors = [grey, grey, grey].join(',');
+		var colors2 = [greyi, greyi, greyi].join(',');
+
+		document.body.style.color = 'rgb('+colors+')';
+		document.body.style.background = 'rgb('+colors2+')';
+	});
+</script>
+</body>
+</html>

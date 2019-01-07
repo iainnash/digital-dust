@@ -1,0 +1,16 @@
+body {
+	background: #000;
+	color: #fff;
+}
+#newsfeed {
+	margin: 0 auto;
+	width: 60%;
+	min-width: 750px;
+
+}
+#newsfeed .message {
+	font-family: 'VT323';
+	font-size: 1em;
+	padding: 20px;
+	border-bottom: 2px solid white;
+}

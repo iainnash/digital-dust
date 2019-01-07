@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>digital dust analytics</title>
+	<link href='https://fonts.googleapis.com/css?family=VT323' rel='stylesheet' type='text/css' />
+	<link href='style.css' rel='stylesheet' type='text/css' />
+</head>
+<body>
+
+	<div id="newsfeed">
+
+	</div>
+
+	<script src="../js/firebase.js"></script>
+	<script src="../js/stats.js"></script>
+	<script src="../js/jquery.min.js"></script>
+	<script>
+		function addMessage(s1, s2, html) {
+			var msg = $('<div class="message"></div>');
+			msg.text(s1 + s2);
+			if (html) {
+				msg.append(html);
+			}
+			msg.appendTo($('#newsfeed'));
+			msg.delay(3000).slideUp(800);
+			setTimeout(function() {
+				msg.remove();
+			}, 4000);
+		}
+		var start = (new Date()).getTime();
+		function timePassed() {
+			return (new Date()).getTime() - start;
+		}
+		addMessage('loading...');
+		var stats = new Stats('http://digitaldust.firebaseio.com/');
+		stats.addDustListener(function(stats) {
+			if (timePassed() < 2000) return;
+			console.log(stats);
+			var url;
+			if (stats.type === 'instagram') {
+				url = stats.data.images.low_resolution.url;
+			}
+			if (stats.type === 'flickr') {
+				url = stats.data.url_m;
+			}
+			addMessage('got dust: ', stats.type, '<img src="'+url+'" />');
+		})
+		stats.addLocationListener(function(loc) {
+			if (timePassed() < 2000) return;
+			addMessage('navigated to:', ' lat: ' + loc.lat +', lng: ' + loc.lng + ', desc: ' + loc.desc);
+		})
+	</script>
+</body>
+</html>
